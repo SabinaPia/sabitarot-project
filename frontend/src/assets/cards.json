@@ -1,0 +1,26 @@
+[
+  {
+    "cards": [
+      { "name": "El Loco", "image": "/cards/the-fool.jpg" },
+      { "name": "La Emperatriz", "image": "/cards/the-empress.jpg" },
+      { "name": "El Sol", "image": "/cards/the-sun.jpg" }
+    ],
+    "meaning": "Nueva etapa, creatividad y éxito brillante en tu camino."
+  },
+  {
+    "cards": [
+      { "name": "La Sacerdotisa", "image": "/cards/the-high-priestess.jpg" },
+      { "name": "El Colgado", "image": "/cards/the-hanged-man.jpg" },
+      { "name": "La Muerte", "image": "/cards/death.jpg" }
+    ],
+    "meaning": "Reflexión profunda, transformación y cierre de ciclos."
+  },
+  {
+    "cards": [
+      { "name": "El Mago", "image": "/cards/the-magican.jpg" },
+      { "name": "La Fuerza", "image": "/cards/strength.jpg" },
+      { "name": "El Juicio", "image": "/cards/judgement.jpg" }
+    ],
+    "meaning": "Acción, coraje y oportunidades para decisiones importantes."
+  }
+]
