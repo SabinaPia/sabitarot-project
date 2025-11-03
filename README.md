@@ -199,7 +199,10 @@ kubectl get hpa
 
 **Windows:**
 ```powershell
-# Instalar con herramientas HTTP
+C:\Users\Dell\Desktop\apache-bench>.\ab.exe -V
+This is ApacheBench, Version 2.3 <$Revision: 1923142 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
 ```
 
 **Linux:**
