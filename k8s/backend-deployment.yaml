@@ -16,10 +16,30 @@ spec:
     spec:
       containers:
         - name: backend
-          image: sabitarot-project-backend:latest
-          imagePullPolicy: Never
+          image: us-central1-docker.pkg.dev/main-bloom-476318-f9/sabitarot-repo/sabitarot-project-backend:latest
+          imagePullPolicy: Always 
           ports:
             - containerPort: 8000
           env:
             - name: DATABASE_URL
               value: "postgresql://postgres:76156047@db-service:5432/sabitarot_db"
+          resources: 
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          livenessProbe:
+            httpGet:
+              path: /healthchecks
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          readinessProbe:
+            httpGet:
+              path: /healthchecks
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10

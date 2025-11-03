@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:16-alpine
+          image: us-central1-docker.pkg.dev/main-bloom-476318-f9/sabitarot-repo/postgres:16-alpine
           ports:
             - containerPort: 5432
           env:
@@ -26,9 +26,28 @@ spec:
               value: "76156047"
             - name: POSTGRES_DB
               value: "sabitarot_db"
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - name: db-data
               mountPath: /var/lib/postgresql/data
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 250m
+              memory: 512Mi
+          readinessProbe:
+            exec:
+              command: ["pg_isready", "-U", "postgres"]
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command: ["pg_isready", "-U", "postgres"]
+            initialDelaySeconds: 30
+            periodSeconds: 20
       volumes:
             - name: db-data
               persistentVolumeClaim:

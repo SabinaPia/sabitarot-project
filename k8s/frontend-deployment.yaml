@@ -16,7 +16,27 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: sabitarot-project-frontend:latest
-          imagePullPolicy: Never
+          image: us-central1-docker.pkg.dev/main-bloom-476318-f9/sabitarot-repo/sabitarot-project-frontend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 4173
+          resources: 
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 4173
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 4173
+            initialDelaySeconds: 5
+            periodSeconds: 10

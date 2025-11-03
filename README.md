@@ -29,7 +29,7 @@ La aplicación está dividida en tres servicios principales que se comunican med
 | **Backend** | FastAPI (Python) |
 | **Base de datos** | PostgreSQL 16 Alpine |
 | **Contenedores** | Docker |
-| **Orquestación** | Kubernetes (GKE) |
+| **Orquestación** | Kubernetes (GKE) - Estandar |
 | **IaC** | OpenTofu (Terraform) |
 | **Cloud Provider** | Google Cloud Platform (GCP) |
 | **Registry** | Google Artifact Registry |
@@ -64,7 +64,8 @@ sabitarot-project/
 │   └── Dockerfile
 │
 ├── infra/                       # Infraestructura como código
-│   ├── main.tf                 # Configuración principal
+│   ├── provider.tf             # Configuración principal
+│   ├── outputs.tf             
 │   ├── gke.tf                  # Cluster GKE
 │   ├── variables.tf            # Variables
 │   └── terraform.tfvars        # Valores de variables
@@ -236,8 +237,8 @@ kubectl get hpa --watch
 
 | Servicio | Réplicas Iniciales | Réplicas Máximas | Umbral CPU |
 |----------|-------------------|------------------|------------|
-| Backend | 1 | 3 | 50% |
-| Frontend | 1 | 3 | 50% |
+| Backend | 1 | 5 | 50% |
+| Frontend | 1 | 5 | 50% |
 
 ## 🔧 Desarrollo Local
 
