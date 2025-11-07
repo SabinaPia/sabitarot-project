@@ -4,4 +4,4 @@ gcp_zone       = "us-central1-a"
 machine_type   = "e2-medium"
 node_disk_size_gb = 20
 min_node_count = 1
-max_node_count = 3
+max_node_count = 5

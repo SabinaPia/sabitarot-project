@@ -34,6 +34,7 @@ resource "google_container_node_pool" "sabi_node_pool" {
   cluster  = google_container_cluster.sabi_cluster.name
 
   node_config {
+    service_account = google_service_account.gke_sa.email
     machine_type = var.machine_type
     disk_size_gb = var.node_disk_size_gb
     disk_type    = "pd-standard"
@@ -63,4 +64,19 @@ resource "google_container_node_pool" "sabi_node_pool" {
 resource "google_service_account" "gke_sa" {
   account_id   = "sabi-gke-sa"
   display_name = "SabiTarot GKE Service Account"
+}
+
+# Políticas IAM necesarias para el autoscaling
+
+resource "google_project_iam_member" "gke_sa_roles" {
+  for_each = toset([
+    "roles/container.admin",         
+    "roles/compute.instanceAdmin",   #  crear o eliminar VM
+    "roles/iam.serviceAccountUser",  
+    "roles/monitoring.viewer",       
+  ])
+
+  project = var.gcp_project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.gke_sa.email}"
 }
