@@ -68,7 +68,13 @@ sabitarot-project/
 │   ├── outputs.tf             
 │   ├── gke.tf                  # Cluster GKE
 │   ├── variables.tf            # Variables
-│   └── terraform.tfvars        # Valores de variables
+│   ├── terraform.tfvars        # Valores de variables
+│   ├── backend_deployment.tf
+│   ├── backend_hpa.tf
+│   ├── db_deployment.tf
+│   ├── frontend_deployment.tf
+│   ├── postgres_pvc.tf
+│   └── services.tf
 │
 ├── k8s/                        # Manifiestos Kubernetes
 │   ├── backend-deployment.yaml
